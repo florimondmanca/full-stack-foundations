@@ -1,4 +1,3 @@
-fullstack-nanodegree-vm
-=============
+# Full Stack Foundations
 
-Common code for the Relational Databases and Full Stack Fundamentals courses
+This is the repository I use as I am following the [Full Stack Foundations](https://classroom.udacity.com/courses/ud088/) course at Udacity.
