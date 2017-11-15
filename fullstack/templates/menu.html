@@ -18,4 +18,6 @@
   {% else %}
     <p>No items!</p>
   {% endfor %}
+
+  <a href="{{ url_for('add_item', restaurant_id=restaurant.id) }}">Add item</a>
 {% endblock %}

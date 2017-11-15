@@ -1,7 +1,7 @@
 """Simple Flask project for restaurant menus."""
 
 from random import randint
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -50,6 +50,7 @@ def add_item(restaurant_id):
         item = MenuItem(name=name, restaurant=restaurant)
         db.add(item)
         db.commit()
+        flash(f'Successfully added {item.name}.')
         return redirect(url_for('show_menu', restaurant_id=restaurant_id))
     return render_template('add_item.html', restaurant=restaurant)
 
@@ -64,6 +65,7 @@ def edit_item(restaurant_id, item_id):
         item.name = request.form['name']
         db.add(item)
         db.commit()
+        flash(f'{item.name} successfully edited.')
         return redirect(url_for('show_menu', restaurant_id=restaurant_id))
     return render_template('edit_item.html', restaurant=restaurant, item=item)
 
@@ -77,11 +79,13 @@ def delete_item(restaurant_id, item_id):
     if request.method == 'POST':
         db.delete(item)
         db.commit()
+        flash(f'{item.name} successfully deleted.')
         return redirect(url_for('show_menu', restaurant_id=restaurant_id))
     return render_template('delete_item.html',
                            restaurant=restaurant, item=item)
 
 
 if __name__ == '__main__':
+    app.secret_key = 'super_secret_key'
     app.debug = True
     app.run()
