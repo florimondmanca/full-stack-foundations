@@ -1,7 +1,8 @@
 """Simple Flask project for restaurant menus."""
 
 from random import randint
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, \
+    jsonify
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -40,7 +41,23 @@ def show_menu(restaurant_id):
     return render_template('menu.html', restaurant=restaurant, items=items)
 
 
-@app.route('/restaurants/<int:restaurant_id>/items/add/',
+@app.route('/api/restaurants/<int:restaurant_id>/items/')
+def get_restaurant(restaurant_id):
+    """API endpoint to get the menu of a restaurant."""
+    restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
+    items = db.query(MenuItem).filter_by(restaurant=restaurant)
+    return jsonify(name=restaurant.name,
+                   items=[item.serialized for item in items])
+
+
+@app.route('/api/restaurants/<int:restaurant_id>/items/<int:item_id>/')
+def get_item(restaurant_id, item_id):
+    """API endpoint to get an item from a restaurant's menu."""
+    item = db.query(MenuItem).filter_by(id=item_id).one()
+    return jsonify(item=item.serialized)
+
+
+@app.route('/restaurants/<int:restaurant_id>/menu/add/',
            methods=['GET', 'POST'])
 def add_item(restaurant_id):
     """Add an item to a restaurant's menu."""
@@ -55,7 +72,7 @@ def add_item(restaurant_id):
     return render_template('add_item.html', restaurant=restaurant)
 
 
-@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/edit/',
+@app.route('/restaurants/<int:restaurant_id>/menu/<int:item_id>/edit/',
            methods=['GET', 'POST'])
 def edit_item(restaurant_id, item_id):
     """Edit an item of a restaurant's menu."""
@@ -70,7 +87,7 @@ def edit_item(restaurant_id, item_id):
     return render_template('edit_item.html', restaurant=restaurant, item=item)
 
 
-@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/delete/',
+@app.route('/restaurants/<int:restaurant_id>/menu/<int:item_id>/delete/',
            methods=['GET', 'POST'])
 def delete_item(restaurant_id, item_id):
     """Delete an item from a restaurant's menu."""
