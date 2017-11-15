@@ -42,9 +42,18 @@ def add_item(restaurant_id):
     return render_template('add_item.html', restaurant=restaurant)
 
 
-@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/edit/')
+@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/edit/',
+           methods=['GET', 'POST'])
 def edit_item(restaurant_id, item_id):
-    return "page to edit a menu item. Task 2 complete!"
+    """Edit an item of a restaurant's menu."""
+    restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
+    item = db.query(MenuItem).filter_by(id=item_id).one()
+    if request.method == 'POST':
+        item.name = request.form['name']
+        db.add(item)
+        db.commit()
+        return redirect(url_for('show_menu', restaurant_id=restaurant_id))
+    return render_template('edit_item.html', restaurant=restaurant, item=item)
 
 
 @app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/delete/')
