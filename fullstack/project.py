@@ -1,5 +1,6 @@
 """Simple Flask project for restaurant menus."""
 
+from random import randint
 from flask import Flask, render_template, request, redirect, url_for
 
 from sqlalchemy import create_engine
@@ -18,6 +19,17 @@ def create_db():
 
 app = Flask(__name__)
 db = create_db()
+
+
+@app.route('/')
+def show_random_restaurant_menu():
+    query = db.query(Restaurant)
+    if query.count():
+        index = randint(0, query.count() - 1)
+        restaurant = query.all()[index]
+        return redirect(url_for('show_menu', restaurant_id=restaurant.id))
+    else:
+        return 'No restaurants!'
 
 
 @app.route('/restaurants/<int:restaurant_id>/items')
@@ -56,9 +68,18 @@ def edit_item(restaurant_id, item_id):
     return render_template('edit_item.html', restaurant=restaurant, item=item)
 
 
-@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/delete/')
+@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/delete/',
+           methods=['GET', 'POST'])
 def delete_item(restaurant_id, item_id):
-    return "page to delete a menu item. Task 3 complete!"
+    """Delete an item from a restaurant's menu."""
+    restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
+    item = db.query(MenuItem).filter_by(id=item_id).one()
+    if request.method == 'POST':
+        db.delete(item)
+        db.commit()
+        return redirect(url_for('show_menu', restaurant_id=restaurant_id))
+    return render_template('delete_item.html',
+                           restaurant=restaurant, item=item)
 
 
 if __name__ == '__main__':

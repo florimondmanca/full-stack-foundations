@@ -6,6 +6,7 @@
       method="post">
     <p>Name:</p>
     <input type="text" name="name" value="{{ item.name }}" placeholder='Name of the item'>
-    <input type="submit" value="Add">
+    <input type="submit" value="Submit">
+    <a href="{{ url_for('show_menu', restaurant_id=restaurant.id) }}">Back</a>
   </form>
 {% endblock %}
