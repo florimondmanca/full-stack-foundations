@@ -1,11 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Add menu item for {{ restaurant.name }}</h1>
-  <form action="{{ url_for('add_item', restaurant_id=restaurant.id) }}"
-      method="post">
-    <p>Name:</p>
-    <input type="text" name="name" placeholder='Name of the item'>
-    <input type="submit" value="Add">
-  </form>
+<div class="container">
+  <div class="card">
+
+    <div class="card-body bg-dark text-white">
+      <h1 class="card-title">{{ restaurant.name }}</h1>
+    </div>
+    <div class="card-body">
+      <h3 class="card-text">Add a menu item below.</h3>
+      <form action="{{ url_for('add_item', restaurant_id=restaurant.id) }}"
+          method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input class="form-control" type="text" name="name" placeholder='Name of the item'>
+        </div>
+        <a class="btn" href="{{ url_for('show_menu', restaurant_id=restaurant.id) }}">Back</a>
+        <button class="btn btn-primary" type="submit">Add</button>
+      </form>
+    </div>
+
+  </div>
+</div>
 {% endblock %}

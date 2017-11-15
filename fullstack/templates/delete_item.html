@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete {{ item.name }} from {{ restaurant.name }}</h1>
-  <form action="{{ url_for('delete_item', restaurant_id=restaurant.id, item_id=item.id) }}"
-      method="post">
-    <p>Are you sure you want to delete {{ item.name }}?</p>
-    <input type="submit" value="Confirm">
-  </form>
+<div class="container">
+  <div class="card">
+
+    <div class="card-body bg-dark text-white">
+      <h1 class="card-title">{{ restaurant.name }}</h1>
+    </div>
+    <div class="card-body">
+      <h3 class="card-text">Delete {{ item.name }}?</h3>
+      <form action="{{ url_for('delete_item', restaurant_id=restaurant.id, item_id=item.id) }}"
+          method="post">
+        <a class="btn" href="{{ url_for('show_menu', restaurant_id=restaurant.id) }}">Back</a>
+        <button class="btn btn-danger" type="submit">Yes, delete</button>
+      </form>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
