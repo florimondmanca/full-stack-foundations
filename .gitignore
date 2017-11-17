@@ -1,3 +1,7 @@
 env/
 *.pyc
 *.db
+*-mockup/Document fonts
+*-mockup/img
+*-mockup/snippets
+*-mockup/*.indd
