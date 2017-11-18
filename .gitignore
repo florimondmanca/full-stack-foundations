@@ -5,3 +5,4 @@ env/
 *-mockup/img
 *-mockup/snippets
 *-mockup/*.indd
+__pycache__/
