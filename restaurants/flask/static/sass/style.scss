@@ -1,0 +1,132 @@
+// Variables
+
+$body-font: "Signika", sans-serif;
+$title-font: "Amaranth", sans-serif;
+
+$color-default: rgb(18, 68, 72);
+$color-primary: rgb(37, 152, 108);
+$color-secondary: rgb(71, 117, 121);
+$color-secondary-lighter: rgb(159, 208, 212);
+$color-success: rgb(38, 150, 35);
+$color-warning: rgb(233, 161,0);
+$color-danger: rgb(219, 23, 22);
+$color-hover: lighten($color-primary, 10%);
+
+
+// Mixins
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin center-content() {
+  text-align: center;
+  display: inline-block;
+}
+@mixin pad($padding: 8px 16px) {
+  padding: $padding;
+}
+@mixin placeholder {
+  &.placeholder { @content };
+  &:-moz-placeholder { @content };
+  &::-webkit-input-placeholder { @content };
+}
+
+// Styling
+
+body {
+  background: $color-default;
+  font-family: $body-font;
+  font-size: 18px;
+  padding-left: 87px;
+  padding-right: 87px;
+  color: white;
+}
+
+// Components
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title-font;
+  font-style: italic;
+}
+h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid $color-primary;
+  transition: background 0.1s cubic-bezier(.33,.66,.66,1);
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+.btn {
+  border: none;
+  @include border-radius(5px);
+  background-color: $color-secondary;
+  color: white;
+  @include pad();
+  font-size: inherit;
+  font-family: inherit;
+  transition: background 0.1s cubic-bezier(.33,.66,.66,1);
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+.success {
+  background-color: $color-success;
+}
+.warning {
+  background-color: $color-warning;
+}
+.danger {
+  background-color: $color-danger;
+}
+
+// Page nav
+
+nav {
+  ul {
+    padding: 0 0;
+    margin: 0 0;
+    list-style-type: none;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      h1 {
+        display: inline;
+        font-size: 55px;
+        // add space between brand and "add" link
+        &:after {
+          content: " ";
+          display: inline-block;
+          width: 32px;
+        }
+      }
+    }
+  }
+}
+
+
+input {
+  @include border-radius(5px);
+  @include pad();
+  border: none;
+  color: white;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: $color-secondary;
+  @include placeholder {
+    font-style: italic;
+    color: $color-secondary-lighter;
+  }
+}

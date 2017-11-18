@@ -1,6 +1,5 @@
 """Simple Flask project for restaurant menus."""
 
-from random import randint
 from flask import Flask, render_template, request, redirect, url_for, flash, \
     jsonify
 
@@ -23,25 +22,21 @@ db = create_db()
 
 
 @app.route('/')
-def show_random_restaurant_menu():
-    query = db.query(Restaurant)
-    if query.count():
-        index = randint(0, query.count() - 1)
-        restaurant = query.all()[index]
-        return redirect(url_for('show_menu', restaurant_id=restaurant.id))
-    else:
-        return 'No restaurants!'
+def index():
+    """Home page, with a list of all restaurants."""
+    restaurants = db.query(Restaurant).all()
+    return render_template('index.html', restaurants=restaurants)
 
 
-@app.route('/restaurants/<int:restaurant_id>/items')
-def show_menu(restaurant_id):
-    """List the items of a restaurant."""
+@app.route('/restaurants/<int:restaurant_id>/')
+def restaurant_detail(restaurant_id):
+    """Detail page of a restaurant."""
     restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
     items = db.query(MenuItem).filter_by(restaurant=restaurant)
     return render_template('menu.html', restaurant=restaurant, items=items)
 
 
-@app.route('/api/restaurants/<int:restaurant_id>/items/')
+@app.route('/api/restaurants/<int:restaurant_id>/')
 def get_restaurant(restaurant_id):
     """API endpoint to get the menu of a restaurant."""
     restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
@@ -57,7 +52,7 @@ def get_item(restaurant_id, item_id):
     return jsonify(item=item.serialized)
 
 
-@app.route('/restaurants/<int:restaurant_id>/menu/add/',
+@app.route('/restaurants/<int:restaurant_id>/items/add/',
            methods=['GET', 'POST'])
 def add_item(restaurant_id):
     """Add an item to a restaurant's menu."""
@@ -68,11 +63,11 @@ def add_item(restaurant_id):
         db.add(item)
         db.commit()
         flash(f'Successfully added {item.name}.')
-        return redirect(url_for('show_menu', restaurant_id=restaurant_id))
+        return redirect(url_for('restaurant_detail', restaurant_id=restaurant_id))
     return render_template('add_item.html', restaurant=restaurant)
 
 
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:item_id>/edit/',
+@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/edit/',
            methods=['GET', 'POST'])
 def edit_item(restaurant_id, item_id):
     """Edit an item of a restaurant's menu."""
@@ -83,11 +78,11 @@ def edit_item(restaurant_id, item_id):
         db.add(item)
         db.commit()
         flash(f'{item.name} successfully edited.')
-        return redirect(url_for('show_menu', restaurant_id=restaurant_id))
+        return redirect(url_for('restaurant_detail', restaurant_id=restaurant_id))
     return render_template('edit_item.html', restaurant=restaurant, item=item)
 
 
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:item_id>/delete/',
+@app.route('/restaurants/<int:restaurant_id>/items/<int:item_id>/delete/',
            methods=['GET', 'POST'])
 def delete_item(restaurant_id, item_id):
     """Delete an item from a restaurant's menu."""
@@ -97,7 +92,7 @@ def delete_item(restaurant_id, item_id):
         db.delete(item)
         db.commit()
         flash(f'{item.name} successfully deleted.')
-        return redirect(url_for('show_menu', restaurant_id=restaurant_id))
+        return redirect(url_for('restaurant_detail', restaurant_id=restaurant_id))
     return render_template('delete_item.html',
                            restaurant=restaurant, item=item)
 

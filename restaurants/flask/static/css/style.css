@@ -1,17 +1,87 @@
-:root {
-  --color-default: rgb(18, 68, 72);
-  --color-primary: rgb(37, 152, 108);
-  --color-secondary: rgb(71, 117, 121);
-  --color-success: rgb(38, 150, 35);
-  --color-warning: rgb(233, 161,0);
-  --color-danger: rgb(219, 23, 22);
-}
-
 body {
-  background: var(--color-default);
-  font-family: 'Open Sans', sans-serif;
-}
+  background: #124448;
+  font-family: "Signika", sans-serif;
+  font-size: 18px;
+  padding-left: 87px;
+  padding-right: 87px;
+  color: white; }
 
-.search-bar {
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Amaranth", sans-serif;
+  font-style: italic; }
 
-}
+h3, h4, h5, h6 {
+  font-weight: normal; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid #25986c;
+  transition: background 0.1s cubic-bezier(0.33, 0.66, 0.66, 1); }
+  a:hover {
+    background: #25986c; }
+
+.btn {
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #477579;
+  color: white;
+  padding: 8px 16px;
+  font-size: inherit;
+  font-family: inherit;
+  transition: background 0.1s cubic-bezier(0.33, 0.66, 0.66, 1); }
+  .btn:hover {
+    background: #25986c; }
+
+.success {
+  background-color: #269623; }
+
+.warning {
+  background-color: #e9a100; }
+
+.danger {
+  background-color: #db1716; }
+
+nav ul {
+  padding: 0 0;
+  margin: 0 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  nav ul .nav-brand {
+    display: flex;
+    align-items: center; }
+    nav ul .nav-brand h1 {
+      display: inline;
+      font-size: 55px; }
+      nav ul .nav-brand h1:after {
+        content: " ";
+        display: inline-block;
+        width: 32px; }
+
+input {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  padding: 8px 16px;
+  border: none;
+  color: white;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: #477579; }
+  input.placeholder {
+    font-style: italic;
+    color: #9fd0d4; }
+  input:-moz-placeholder {
+    font-style: italic;
+    color: #9fd0d4; }
+  input::-webkit-input-placeholder {
+    font-style: italic;
+    color: #9fd0d4; }
+
+/*# sourceMappingURL=style.css.map */

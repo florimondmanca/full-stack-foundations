@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block after_brand %}
+  <a class="btn success" href="#" type="button">Add</a>
+{% endblock %}
+
+{% block content %}
+<ul class="card-list">
+  {% for restaurant in restaurants %}
+  <li class="card">
+    <div class="card-image"></div>
+    <a href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}" class="card-title">{{ restaurant.name }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
