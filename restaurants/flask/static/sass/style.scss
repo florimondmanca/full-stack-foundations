@@ -21,7 +21,7 @@ $color-hover: lighten($color-primary, 10%);
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
-@mixin center-content() {
+@mixin center-content {
   text-align: center;
   display: inline-block;
 }
@@ -34,15 +34,49 @@ $color-hover: lighten($color-primary, 10%);
   &::-webkit-input-placeholder { @content };
 }
 
-// Styling
+
+// General styling
 
 body {
   background: $color-default;
   font-family: $body-font;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: normal;
   padding-left: 87px;
   padding-right: 87px;
   color: white;
+}
+
+// Layout
+
+@mixin inline-elements {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin trailing-space($size) {
+  // adds space after an element
+  &:after {
+    content: " ";
+    display: inline-block;
+    width: $size;
+  }
+}
+
+.inline {
+  @include inline-elements;
+}
+
+ul.inline {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  @include inline-elements;
+  h1 {
+    display: inline-block;
+    @include trailing-space(32px);
+  }
 }
 
 // Components
@@ -65,55 +99,40 @@ a {
   }
 }
 
-.btn {
-  border: none;
+
+// Buttons
+
+@mixin button($bg) {
+  border: 1px solid darken($bg, 10%);
   @include border-radius(5px);
-  background-color: $color-secondary;
+  background-color: $bg;
   color: white;
   @include pad();
   font-size: inherit;
   font-family: inherit;
-  transition: background 0.1s cubic-bezier(.33,.66,.66,1);
+  transition: background-color 0.1s cubic-bezier(.33,.66,.66,1);
   &:hover {
-    background: $color-primary;
+    background-color: saturate(lighten($bg, 5%), 20%);
   }
 }
 
+.btn {
+  @include button($color-secondary)
+}
 .success {
-  background-color: $color-success;
+  @include button($color-success);
 }
 .warning {
-  background-color: $color-warning;
+  @include button($color-warning);
 }
 .danger {
-  background-color: $color-danger;
+  @include button($color-danger);
 }
 
 // Page nav
 
-nav {
-  ul {
-    padding: 0 0;
-    margin: 0 0;
-    list-style-type: none;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      h1 {
-        display: inline;
-        font-size: 55px;
-        // add space between brand and "add" link
-        &:after {
-          content: " ";
-          display: inline-block;
-          width: 32px;
-        }
-      }
-    }
-  }
+h1.brand {
+  font-size: 55px;
 }
 
 

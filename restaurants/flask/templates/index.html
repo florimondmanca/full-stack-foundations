@@ -2,15 +2,15 @@
 
 
 {% block after_brand %}
-  <a class="btn success" href="#" type="button">Add</a>
+  <a class="btn success" href="{{ url_for('add_restaurant') }}" type="button">Add</a>
 {% endblock %}
 
 {% block content %}
-<ul class="card-list">
+<ul>
   {% for restaurant in restaurants %}
-  <li class="card">
-    <div class="card-image"></div>
-    <a href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}" class="card-title">{{ restaurant.name }}</a>
+  <li>
+    <div></div>
+    <a href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}">{{ restaurant.name }}</a>
   </li>
   {% endfor %}
 </ul>
