@@ -1,0 +1,17 @@
+:root {
+  --color-default: rgb(18, 68, 72);
+  --color-primary: rgb(37, 152, 108);
+  --color-secondary: rgb(71, 117, 121);
+  --color-success: rgb(38, 150, 35);
+  --color-warning: rgb(233, 161,0);
+  --color-danger: rgb(219, 23, 22);
+}
+
+body {
+  background: var(--color-default);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search-bar {
+
+}

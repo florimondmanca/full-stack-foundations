@@ -13,7 +13,7 @@
           method="post">
         <div class="form-group">
           <label for="name">Name</label>
-          <input class="form-control" type="text" name="name" placeholder='Name of the item'>
+          <input class="form-control" type="text" name="name" placeholder='Name of the item' value="{{ item.name }}">
         </div>
         <a class="btn" href="{{ url_for('show_menu', restaurant_id=restaurant.id) }}">Back</a>
         <button class="btn btn-primary" type="submit">Save</button>
