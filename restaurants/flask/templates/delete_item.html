@@ -7,6 +7,6 @@
 <form action="{{ url_for('delete_item', restaurant_id=restaurant.id, item_id=item.id) }}"
     method="post">
   <a class="btn" href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}">Back</a>
-  <button class="btn danger" type="submit">Yes, delete</button>
+  <button class="btn-danger" type="submit">Yes, delete</button>
 </form>
 {% endblock %}

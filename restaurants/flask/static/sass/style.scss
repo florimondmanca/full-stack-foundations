@@ -15,23 +15,55 @@ $color-hover: lighten($color-primary, 10%);
 
 // Mixins
 
+@mixin plain-ul {
+  // ul without bullet points, padding nor margins
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
+
+@mixin box-shadow($x, $y, $blur: 5px, $spread: 0px, $color: #222) {
+  -moz-box-shadow: $x $y $blur $spread $color;
+  -webkit-box-shadow: $x $y $blur $spread $color;
+  -o-box-shadow: $x $y $blur $spread $color;
+  box-shadow: $x $y $blur $spread $color;
+}
+
 @mixin center-content {
   text-align: center;
   display: inline-block;
 }
+
 @mixin pad($padding: 8px 16px) {
   padding: $padding;
 }
+
 @mixin placeholder {
   &.placeholder { @content };
   &:-moz-placeholder { @content };
   &::-webkit-input-placeholder { @content };
+}
+
+@mixin inline-elements {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin trailing-space($size) {
+  // adds space after an element
+  &:after {
+    content: " ";
+    display: inline-block;
+    width: $size;
+  }
 }
 
 
@@ -49,29 +81,12 @@ body {
 
 // Layout
 
-@mixin inline-elements {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@mixin trailing-space($size) {
-  // adds space after an element
-  &:after {
-    content: " ";
-    display: inline-block;
-    width: $size;
-  }
-}
-
 .inline {
   @include inline-elements;
 }
 
 ul.inline {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+  @include plain-ul;
   @include inline-elements;
   h1 {
     display: inline-block;
@@ -119,14 +134,37 @@ a {
 .btn {
   @include button($color-secondary)
 }
-.success {
+.btn-success {
   @include button($color-success);
 }
-.warning {
+.btn-warning {
   @include button($color-warning);
 }
-.danger {
+.btn-danger {
   @include button($color-danger);
+}
+
+@mixin alert($bg) {
+  border: 1px solid darken($bg, 10%);
+  @include border-radius(5px);
+  background-color: $bg;
+  color: white;
+  @include pad();
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.alert {
+  @include alert($color-secondary);
+}
+.alert-success {
+  @include alert($color-success);
+}
+.alert-warning {
+  @include alert($color-warning);
+}
+.alert-danger {
+  @include alert($color-danger);
 }
 
 // Page nav
@@ -135,6 +173,7 @@ h1.brand {
   font-size: 55px;
 }
 
+// Form inputs
 
 input {
   @include border-radius(5px);
@@ -147,5 +186,35 @@ input {
   @include placeholder {
     font-style: italic;
     color: $color-secondary-lighter;
+  }
+}
+
+
+ul.restaurant-cards {
+  @include plain-ul;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+
+  .restaurant-card {
+    display: block;
+
+    .restaurant-card-picture {
+      border: 2px solid white;
+      @include border-radius(2px);
+      @include box-shadow(0px, -1px, 5px);
+      border: none;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .restaurant-card-title {
+      padding: 10px;
+      text-align: center;
+      a {
+        vertical-align: middle;
+      }
+    }
   }
 }
