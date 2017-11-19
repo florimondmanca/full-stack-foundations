@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ restaurant.name }}</h1>
+<h1><a href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}">{{ restaurant.name }}</a></h1>
 <h3>Add a menu item</h3>
 
 <form action="{{ url_for('add_item', restaurant_id=restaurant.id) }}"
@@ -29,7 +29,4 @@
   </div>
   <button class="btn-success" type="submit">Add</button>
 </form>
-
-<br>
-<a class="btn" href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}">Back</a>
 {% endblock %}

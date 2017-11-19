@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Delete {{ restaurant.name }}?</h1>
+<h1>Delete <a href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}">{{ restaurant.name }}</a>?</h1>
 
 <form action="{{ url_for('delete_restaurant', restaurant_id=restaurant.id) }}"
     method="post">
-  <a class="btn" href="{{ url_for('restaurant_detail', restaurant_id=restaurant.id) }}">Back</a>
   <button class="btn-danger" type="submit">Yes, delete</button>
 </form>
 {% endblock %}
