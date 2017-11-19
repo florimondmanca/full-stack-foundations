@@ -142,9 +142,17 @@ def delete_item(restaurant_id, item_id):
 
 # API endpoints
 
+@app.route('/api/restaurants/')
+def api_restaurants():
+    """API endpoint to GET all the restaurants."""
+    restaurants = db.query(Restaurant).all()
+    return jsonify(restaurants=[restaurant.serialized
+                                for restaurant in restaurants])
+
+
 @app.route('/api/restaurants/<int:restaurant_id>/')
-def get_restaurant(restaurant_id):
-    """API endpoint to get the menu of a restaurant."""
+def api_restaurant_detail(restaurant_id):
+    """API endpoint to GET the menu of a restaurant."""
     restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
     items = db.query(MenuItem).filter_by(restaurant=restaurant)
     return jsonify(name=restaurant.name,
@@ -152,8 +160,8 @@ def get_restaurant(restaurant_id):
 
 
 @app.route('/api/restaurants/<int:restaurant_id>/items/<int:item_id>/')
-def get_item(restaurant_id, item_id):
-    """API endpoint to get an item from a restaurant's menu."""
+def api_item(restaurant_id, item_id):
+    """API endpoint to GET an item from a restaurant's menu."""
     item = db.query(MenuItem).filter_by(id=item_id).one()
     return jsonify(item=item.serialized)
 
