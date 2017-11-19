@@ -87,7 +87,14 @@ def add_item(restaurant_id):
     restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
     if request.method == 'POST':
         name = request.form['name']
-        item = MenuItem(name=name, restaurant=restaurant)
+        price = request.form['price']
+        description = request.form['description']
+        course = request.form['course']
+        item = MenuItem(name=name,
+                        price=price,
+                        description=description,
+                        course=course,
+                        restaurant=restaurant)
         db.add(item)
         db.commit()
         flash(f'Successfully added {item.name}.')
@@ -104,6 +111,9 @@ def edit_item(restaurant_id, item_id):
     item = db.query(MenuItem).filter_by(id=item_id).one()
     if request.method == 'POST':
         item.name = request.form['name']
+        item.price = request.form['price']
+        item.description = request.form['description']
+        request.course = request.form['course']
         db.add(item)
         db.commit()
         flash(f'{item.name} successfully edited.')
