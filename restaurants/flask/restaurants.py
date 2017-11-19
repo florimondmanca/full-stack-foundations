@@ -18,6 +18,7 @@ def create_db():
 
 
 app = Flask(__name__)
+app.config['CURRENCY'] = '€'
 db = create_db()
 
 
@@ -35,7 +36,8 @@ def restaurant_detail(restaurant_id):
     """Detail page of a restaurant."""
     restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
     items = db.query(MenuItem).filter_by(restaurant=restaurant)
-    return render_template('restaurant_detail.html', restaurant=restaurant, items=items)
+    return render_template('restaurant_detail.html', restaurant=restaurant,
+                           items=items)
 
 
 @app.route('/restaurants/add/', methods=['GET', 'POST'])
@@ -154,6 +156,40 @@ def get_item(restaurant_id, item_id):
     """API endpoint to get an item from a restaurant's menu."""
     item = db.query(MenuItem).filter_by(id=item_id).one()
     return jsonify(item=item.serialized)
+
+
+# Context processors
+
+@app.context_processor
+def utilities():
+    """Utility template tags/context processors."""
+    def get_currency():
+        return app.config['CURRENCY']
+
+    def format_price(amount, currency=None):
+        """Return a formatted price.
+
+        Parameters
+        ----------
+        amount : float-like
+        currency : str
+            If $ or £, the currency will be placed before the amount.
+            Default is app.config['CURRENCY'].
+
+        format_price(2, '€') -> 2.00€
+        format_price(2.6, '£') -> £2.60
+        format_price(.99, '$') -> $0.99
+        """
+        if currency is None:
+            currency = get_currency()
+        amount = float(amount)
+        before = (currency in '$ £'.split())
+        if before:
+            return '{}{:.2f}'.format(currency, amount)
+        else:
+            return '{:.2f}{}'.format(amount, currency)
+
+    return dict(currency=get_currency(), format_price=format_price)
 
 
 if __name__ == '__main__':

@@ -25,7 +25,7 @@
     <textarea name="description" rows="3" cols="80" placeholder='A short description of the item'>{{ item.description }}</textarea>
   </div>
   <div class="form-group">
-    <label for="price">Price ($) :</label>
+    <label for="price">Price ({{ currency }}) :</label>
     <input type="text" name="price" placeholder="Price of the item" value="{{ item.price }}">
   </div>
   <button class="btn-success" type="submit">Save</button>

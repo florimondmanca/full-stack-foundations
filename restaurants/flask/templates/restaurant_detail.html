@@ -27,7 +27,7 @@
         <a class="danger" href="{{ url_for('delete_item', restaurant_id=restaurant.id, item_id=item.id) }}">Delete</a>
       </section>
       <section class="right">
-        <h4 class="item-price">{{ item.price }}</h4>
+        <h4 class="item-price">{{ format_price(item.price) }}</h4>
       </section>
     </li>
   {% endfor %}
