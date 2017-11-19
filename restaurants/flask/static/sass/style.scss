@@ -79,6 +79,13 @@ body {
   color: white;
 }
 
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid transparentize(white, .85);
+  border-bottom: 1px solid transparentize(white, .7);
+}
+
 // Layout
 
 .inline {
@@ -241,9 +248,12 @@ ul.restaurant-cards {
   background-color: $color-primary;
   padding: 20px;
   max-width: 500px;
+  border: 2px solid $color-secondary;
+  @include border-radius(10px);
 
-  ul {
+  ul.menu-items {
     @include plain-ul;
+    margin-top: 2em;
   }
 
   .menu-title {

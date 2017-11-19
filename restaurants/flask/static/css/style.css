@@ -7,6 +7,12 @@ body {
   padding-right: 87px;
   color: white; }
 
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
 .inline {
   display: flex;
   justify-content: space-between;
@@ -234,11 +240,17 @@ ul.restaurant-cards {
 .menu {
   background-color: #25986c;
   padding: 20px;
-  max-width: 500px; }
-  .menu ul {
+  max-width: 500px;
+  border: 2px solid #477579;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px; }
+  .menu ul.menu-items {
     margin: 0;
     padding: 0;
-    list-style-type: none; }
+    list-style-type: none;
+    margin-top: 2em; }
   .menu .menu-title {
     font-size: 40px;
     text-align: center;
