@@ -1,10 +1,7 @@
 env/
 *.pyc
 *.db
-*-mockup/Document fonts
-*-mockup/img
 *-mockup/snippets
-*-mockup/*.indd
 __pycache__
 *.css.map
 .sass-cache

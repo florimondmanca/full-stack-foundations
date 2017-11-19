@@ -1,0 +1,197 @@
+%!Adobe-FontList 1.16
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\.DS_Store
+FileLength:6148
+FileModTime:1510950540
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\Signika\OFL.txt
+FileLength:4493
+FileModTime:1322006400
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Signika-Bold
+FamilyName:Signika
+StyleName:Bold
+MenuName:Signika
+StyleBits:2
+WeightClass:700
+WidthClass:5
+AngleClass:0
+FullName:Signika Bold
+WritingScript:Roman
+OutlineFileName:\Signika\Signika-Bold.ttf
+DataFormat:sfntData
+FileLength:160700
+FileModTime:1322006400
+NameArray:0,Mac,4,Signika Bold
+NameArray:0,Win,1,Signika
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Signika-Light
+FamilyName:Signika
+StyleName:Light
+MenuName:Signika Light
+StyleBits:0
+WeightClass:300
+WidthClass:5
+AngleClass:0
+FullName:Signika Light
+WritingScript:Roman
+OutlineFileName:\Signika\Signika-Light.ttf
+DataFormat:sfntData
+FileLength:185660
+FileModTime:1322006400
+NameArray:0,Mac,4,Signika Light
+NameArray:0,Win,1,Signika Light
+NameArray:0,Win,16,Signika
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Signika-Regular
+FamilyName:Signika
+StyleName:Regular
+MenuName:Signika
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Signika Regular
+WritingScript:Roman
+OutlineFileName:\Signika\Signika-Regular.ttf
+DataFormat:sfntData
+FileLength:141164
+FileModTime:1322006400
+NameArray:0,Mac,4,Signika Regular
+NameArray:0,Win,1,Signika
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Signika-SemiBold
+FamilyName:Signika
+StyleName:SemiBold
+MenuName:Signika SemiBold
+StyleBits:0
+WeightClass:600
+WidthClass:5
+AngleClass:0
+FullName:Signika SemiBold
+WritingScript:Roman
+OutlineFileName:\Signika\Signika-SemiBold.ttf
+DataFormat:sfntData
+FileLength:165864
+FileModTime:1322006400
+NameArray:0,Mac,4,Signika SemiBold
+NameArray:0,Win,1,Signika SemiBold
+NameArray:0,Win,16,Signika
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Amaranth-Bold
+FamilyName:Amaranth
+StyleName:Bold
+MenuName:Amaranth
+StyleBits:2
+WeightClass:700
+WidthClass:5
+AngleClass:0
+FullName:Amaranth Bold
+WritingScript:Roman
+OutlineFileName:\Amaranth\Amaranth-Bold.ttf
+DataFormat:sfntData
+FileLength:72844
+FileModTime:1304470800
+NameArray:0,Mac,4,Amaranth Bold
+NameArray:0,Win,1,Amaranth
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Amaranth-BoldItalic
+FamilyName:Amaranth
+StyleName:Bold Italic
+MenuName:Amaranth
+StyleBits:3
+WeightClass:700
+WidthClass:5
+AngleClass:1
+FullName:Amaranth Bold Italic
+WritingScript:Roman
+OutlineFileName:\Amaranth\Amaranth-BoldItalic.ttf
+DataFormat:sfntData
+FileLength:106708
+FileModTime:1304470800
+NameArray:0,Mac,4,Amaranth Bold Italic
+NameArray:0,Win,1,Amaranth
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Amaranth-Italic
+FamilyName:Amaranth
+StyleName:Italic
+MenuName:Amaranth
+StyleBits:1
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Amaranth Italic
+WritingScript:Roman
+OutlineFileName:\Amaranth\Amaranth-Italic.ttf
+DataFormat:sfntData
+FileLength:96780
+FileModTime:1304470800
+NameArray:0,Mac,4,Amaranth Italic
+NameArray:0,Win,1,Amaranth
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Amaranth-Regular
+FamilyName:Amaranth
+StyleName:Regular
+MenuName:Amaranth
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Amaranth Regular
+WritingScript:Roman
+OutlineFileName:\Amaranth\Amaranth-Regular.ttf
+DataFormat:sfntData
+FileLength:79036
+FileModTime:1304470800
+NameArray:0,Mac,4,Amaranth Regular
+NameArray:0,Win,1,Amaranth
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\Amaranth\OFL.txt
+FileLength:4482
+FileModTime:1304470800
+%EndFont
+
