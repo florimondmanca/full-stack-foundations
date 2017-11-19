@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+{% if restaurants %}
 <ul class="restaurant-cards">
   {% for restaurant in restaurants %}
   <li class="restaurant-card">
@@ -16,5 +17,8 @@
   </li>
   {% endfor %}
 </ul>
+{% else %}
+<p>No restaurants so far! Use this <a class="btn-success" href="{{ url_for('add_restaurant') }}" type="button">Add</a> button to add some.</p>
+{% endif %}
 
 {% endblock %}

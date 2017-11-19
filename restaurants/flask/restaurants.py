@@ -35,7 +35,7 @@ def index():
 def restaurant_detail(restaurant_id):
     """Detail page of a restaurant."""
     restaurant = db.query(Restaurant).filter_by(id=restaurant_id).one()
-    items = db.query(MenuItem).filter_by(restaurant=restaurant)
+    items = db.query(MenuItem).filter_by(restaurant=restaurant).all()
     return render_template('restaurant_detail.html', restaurant=restaurant,
                            items=items)
 

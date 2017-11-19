@@ -18,8 +18,9 @@
 <div class="menu">
   <h1 class="menu-title">Menu</h1>
   <hr>
+  {% if items %}
   <ul class="menu-items">
-  {% for item in items %}
+    {% for item in items %}
     <li class="menu-item">
       <section class="left">
         <h4 class="item-name">{{ item.name }}</h4>
@@ -31,7 +32,10 @@
         <h4 class="item-price">{{ format_price(item.price) }}</h4>
       </section>
     </li>
-  {% endfor %}
+    {% endfor %}
   </ul>
+  {% else %}
+  <p>No menu items so far! Use this <a class="btn-success" href="{{ url_for('add_item', restaurant_id=restaurant.id) }}">Add item</a> to add some.</p>
+  {% endif %}
 </div>
 {% endblock %}
