@@ -6,8 +6,27 @@
 
 <form action="{{ url_for('add_item', restaurant_id=restaurant.id) }}"
     method="post">
-  <label for="name">Name :</label>
-  <input type="text" name="name" placeholder='Name of the item'>
+  <div class="form-group">
+    <label for="name">Name :</label>
+    <input type="text" name="name" placeholder='Name of the item'>
+  </div>
+  <div class="form-group">
+    <label for="course">Course :</label>
+    <select class="" name="course">
+      <option value="Entree">Entree</option>
+      <option value="Dessert">Dessert</option>
+      <option value="Appetizer">Appetizer</option>
+      <option value="Beverage">Beverage</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Description :</label>
+    <textarea name="description" rows="3" cols="80" placeholder='A short description of the item'></textarea>
+  </div>
+  <div class="form-group">
+    <label for="price">Price ($) :</label>
+    <input type="text" name="price" placeholder="Price of the item">
+  </div>
   <button class="btn-success" type="submit">Add</button>
 </form>
 
